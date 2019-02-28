@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Vue JS</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+  crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div id="shopping">
+    <h1>{{ header }}</h1>
+     <input type="text" name="item" id="item1"> <button type="button" id="button1">Enter</button>
+    <ul>
+        <li v-for="item in items" id="item"> {{ item }}</li>
+    </ul>
+</div>
+ 
+    <script>
+    var shopping = new Vue({
+    	el : '#shopping',
+    	data : {
+    		header : 'Shopping List',
+    		items : [
+    		'Paper',
+    		'Copy',
+    		'Pencil',
+    		]
+    	}
+    })
+    $('#button1').click(function(){
+    	let a = $('#item1').val();
+    	shopping.$data.items.push(a);
+    	$('#item1').val('');
+    	$('#item1').focus();
+    });
+    $('#item').click(function(){
+    	let a = $('#item').val();
+    	shopping.$data.items.pop(a);
+    });
+
+    </script>
+</body>
+
+</html>
